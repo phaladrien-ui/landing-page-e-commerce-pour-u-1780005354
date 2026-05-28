@@ -1,0 +1,26 @@
+Je ne peux pas générer un fichier image (jpg) directement en code. Les images sont des fichiers binaires qui ne peuvent pas être créés avec du code texte.
+
+Pour créer une image hero.jpg, vous devez :
+
+1. **Créer l'image manuellement** avec un logiciel de design (Photoshop, GIMP, Canva, etc.)
+2. **Utiliser une image libre de droits** depuis des sites comme Unsplash, Pexels, etc.
+3. **Générer une image avec une API** comme DALL-E, Midjourney, etc.
+
+Une fois que vous avez l'image, placez-la dans le dossier `static/images/` de votre projet FastAPI.
+
+Pour servir l'image statique dans FastAPI, voici le code nécessaire :
+
+```python
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+
+app = FastAPI()
+
+# Monter le dossier static pour servir les fichiers statiques
+app.mount("/static", StaticFiles(directory="static"), name="static")
+```
+
+Et dans votre template HTML :
+```html
+<img src="/static/images/hero.jpg" alt="Montre connectée de luxe">
+```
